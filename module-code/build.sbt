@@ -19,7 +19,7 @@ organization := "ws.securesocial"
 
 organizationName := "SecureSocial"
 
-organizationHomepage := Some(new URL("http://www.securesocial.ws")) 
+organizationHomepage := Some(new URL("http://www.revmetrix.com")) 
 
 publishMavenStyle := true
 
@@ -34,6 +34,8 @@ publishTo := {
   else
     Some("releases"  at nexus + "content/repositories/revmetrix_public_releases")
 }
+
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 startYear := Some(2012)
 
