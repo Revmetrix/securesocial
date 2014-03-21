@@ -16,7 +16,7 @@
  */
 package securesocial.core
 
-
+import Role._
 /**
  * This trait represents a user.  Using this trait you can return your own object from the
  * UserService. Find methods if you need to instead of returning a SocialUser.
@@ -40,6 +40,8 @@ trait Identity {
   def oAuth1Info: Option[OAuth1Info]
   def oAuth2Info: Option[OAuth2Info]
   def passwordInfo: Option[PasswordInfo]
+  def role: Option[Role.Value]
+  def attributes: Option[Map[String,String]]
 }
 
 /**
@@ -49,14 +51,14 @@ case class SocialUser(identityId: IdentityId, firstName: String, lastName: Strin
                       avatarUrl: Option[String], authMethod: AuthenticationMethod,
                       oAuth1Info: Option[OAuth1Info] = None,
                       oAuth2Info: Option[OAuth2Info] = None,
-                      passwordInfo: Option[PasswordInfo] = None) extends Identity
+                      passwordInfo: Option[PasswordInfo] = None, role : Option[Role.Value] = None, attributes: Option[Map[String,String]] = None) extends Identity
 
 object SocialUser {
   def apply(i: Identity): SocialUser = {
     SocialUser(
       i.identityId, i.firstName, i.lastName, i.fullName,
       i.email, i.avatarUrl, i.authMethod, i.oAuth1Info,
-      i.oAuth2Info, i.passwordInfo
+      i.oAuth2Info, i.passwordInfo, i.role, i.attributes
     )
   }
 }

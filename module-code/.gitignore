@@ -6,6 +6,8 @@
 # Files related to Play build or usage
 target
 logs
+.target
+.cache
 
 # IDE and editors
 *~
