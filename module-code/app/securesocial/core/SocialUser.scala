@@ -47,6 +47,8 @@ trait Role
 {
 	def name: String
 	def level: Int
+	//def valueOf (s: String) : Role
+	//def values() : List[Role]
 }
 
 /**
