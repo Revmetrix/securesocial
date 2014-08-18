@@ -243,7 +243,7 @@ object Registration extends Controller {
             }
             val eventSession = Events.fire(new SignUpEvent(user)).getOrElse(session)
             if ( UsernamePasswordProvider.signupSkipLogin ) {
-              val authResult = ProviderController.completeAuthentication(user, eventSession).flashing(Success -> Messages(SignUpDone))
+              val authResult = ProviderController.completeAuthentication(saved, eventSession).flashing(Success -> Messages(SignUpDone))
               onHandleSignUpGoToOpt.map { targetUrl =>
                 authResult.withHeaders(LOCATION -> targetUrl)
               } getOrElse authResult
