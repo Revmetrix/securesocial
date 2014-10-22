@@ -24,6 +24,11 @@ trait UserProfile {
   def userId: String
 }
 
+trait Role {
+  def name: String
+  def level: Int
+}
+
 /**
  * A generic profile
  */
@@ -37,6 +42,8 @@ trait GenericProfile extends UserProfile {
   def oAuth1Info: Option[OAuth1Info]
   def oAuth2Info: Option[OAuth2Info]
   def passwordInfo: Option[PasswordInfo]
+  def role: Option[Role]
+  def attributes: Map[String, String]
 }
 
 /**
@@ -53,7 +60,9 @@ case class BasicProfile(
   authMethod: AuthenticationMethod,
   oAuth1Info: Option[OAuth1Info] = None,
   oAuth2Info: Option[OAuth2Info] = None,
-  passwordInfo: Option[PasswordInfo] = None) extends GenericProfile
+  passwordInfo: Option[PasswordInfo] = None,
+  role: Option[Role] = None,
+  attributes: Map[String, String] = Map.empty) extends GenericProfile
 
 /**
  * The OAuth 1 details

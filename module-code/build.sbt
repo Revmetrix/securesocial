@@ -26,6 +26,8 @@ organizationName := "SecureSocial"
 
 organizationHomepage := Some(new URL("http://www.securesocial.ws"))
 
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+
 publishMavenStyle := true
 
 publishArtifact in Test := false
@@ -33,11 +35,11 @@ publishArtifact in Test := false
 pomIncludeRepository := { _ => false }
 
 publishTo := {
-  val nexus = "https://oss.sonatype.org/"
+  val nexus = "http://nexus.revmetrix.com:8081/nexus/"
   if (version.value.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
+    Some("snapshots" at nexus + "content/repositories/revmetrix_public_snapshots")
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    Some("releases"  at nexus + "content/repositories/revmetrix_public_releases")
 }
 
 startYear := Some(2012)
@@ -50,16 +52,16 @@ homepage := Some(url("http://www.securesocial.ws"))
 
 pomExtra := (
   <scm>
-    <url>https://github.com/jaliss/securesocial</url>
-    <connection>scm:git:git@github.com:jaliss/securesocial.git</connection>
-    <developerConnection>scm:git:https://github.com/jaliss/securesocial.git</developerConnection>
+    <url>https://github.com/revmetrix/securesocial</url>
+    <connection>scm:git:git@github.com:revmetrix/securesocial.git</connection>
+    <developerConnection>scm:git:https://github.com/revmetrix/securesocial.git</developerConnection>
   </scm>
   <developers>
     <developer>
-      <id>jaliss</id>
-      <name>Jorge Aliss</name>
-      <email>jaliss [at] gmail.com</email>
-      <url>https://twitter.com/jaliss</url>
+      <id>revmetrix</id>
+      <name>revmetrix</name>
+      <email>jobs@revmetrix.com</email>
+      <url>https://twitter.com/revmetrix</url>
     </developer>
   </developers>
 )
